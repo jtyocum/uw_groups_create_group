@@ -31,12 +31,12 @@ def create_uw_group(
     """
 
     group_parameters = json.dumps(
-        {"data": {"id": uw_group, "admins": {"type": "group", "id": uw_group_admins}}}
+        {"data": {"id": uw_group, "admins": [{"type": "group", "id": uw_group_admins}]}}
     )
 
     r = requests.put(
         gws_base_url + "/group/" + uw_group,
-        json=group_parameters,
+        data=group_parameters,
         verify=gws_ca_cert,
         cert=(gws_client_cert, gws_client_key),
     )
