@@ -34,9 +34,12 @@ def create_uw_group(
         {"data": {"id": uw_group, "admins": [{"type": "group", "id": uw_group_admins}]}}
     )
 
+    headers = {"Content-Type": "application/json"}
+
     r = requests.put(
         gws_base_url + "/group/" + uw_group,
         data=group_parameters,
+        headers=headers,
         verify=gws_ca_cert,
         cert=(gws_client_cert, gws_client_key),
     )
